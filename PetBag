@@ -1,0 +1,129 @@
+/*Brandon Merrell
+ * IT 145 - Module 2
+ * 9/13/2025
+ */
+
+package Java;
+
+import java.util.Scanner;
+
+
+//These are the main details of the cat and the cats stay. Made them private so they can't be messed with directly
+public class catPetStatus {
+	private String petType;
+	private String petName;
+	private int petAge;
+	private int catSpaces;
+	private int daysStay;
+	private double amountDue;
+	private int catSpaceNumber;
+	
+	
+	//This is the starting point for the new cat object. It sets the variables used with empty values
+	public catPetStatus() {
+		this.petType = "Cat";
+		this.petName = "";
+		this.petAge = 0;
+		this.catSpaces = 0;
+		this.daysStay = 0;
+		this.amountDue = 0.0;
+		this.catSpaceNumber = 0;
+	}
+	
+	
+	//This method gets the info from the user that we will need 
+	public void petInformationFromUser() {
+		try (Scanner scnr = new Scanner(System.in)) {
+			System.out.println("What is your cat's name?: ");
+			this.setPetName(scnr.nextLine());
+			
+			System.out.println("How old is your cat?: ");
+			this.setPetAge(scnr.nextInt());
+			
+			System.out.println("How long would you like your cat to stay with us?: ");
+			this.setDaysStay(scnr.nextInt());
+		}
+	}
+	
+	//This shows all the details of the information gathered for the cat
+	public void showInfo() {
+		System.out.println("Pet Type: " + this.getPetType());
+		System.out.println("Cat Name: " + this.getPetName());
+		System.out.println("Cat Age: " + this.getPetAge());
+		System.out.println("Days Staying: " + this.getDaysStay());
+		System.out.println("Total amount due: " + String.format("%.2f", this.getAmountDue()));
+		
+	}
+
+	// These methods are how we get information out of our cat object. They don't change anything, they just give us the value.
+	public String getPetType() {
+        return this.petType;
+    }
+
+    public String getPetName() {
+        return this.petName;
+    }
+
+    public int getPetAge() {
+        return this.petAge;
+    }
+
+    public int getCatSpaces() {
+        return this.catSpaces;
+    }
+
+    public int getDaysStay() {
+        return this.daysStay;
+    }
+
+    public double getAmountDue() {
+        return this.amountDue;
+    }
+
+    public int getCatSpaceNumber() {
+        return this.catSpaceNumber;
+    }
+
+    // These methods let us change the values of our cat's attributes.
+    public void setPetType(String petType) {
+        this.petType = petType;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public void setPetAge(int petAge) {
+        this.petAge = petAge;
+    }
+
+    public void setCatSpaces(int catSpaces) {
+        this.catSpaces = catSpaces;
+    }
+	
+	//This method sets the number of days the cat stays and does the math to calculate the amount due for the stay
+    public void setDaysStay(int daysStay) {
+        this.daysStay = daysStay;
+        this.amountDue = daysStay * 18.00;
+    }
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;
+    }
+
+    public void setCatSpaceNumber(int catSpaceNumber) {
+        this.catSpaceNumber = catSpaceNumber;
+    }
+    
+    public static void main(String[] args) {
+    	 //This is where we create a new instance of our catPetStatus class.
+        catPetStatus myCat = new catPetStatus();
+
+        //Now we call the method wrote to get all the information from the user.
+        myCat.petInformationFromUser();
+
+        //I call the method to print out all the cat's information
+        myCat.showInfo();
+    }
+
+}
